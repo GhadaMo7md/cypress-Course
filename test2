@@ -1,0 +1,35 @@
+/// <reference types ="Cypress" />
+
+describe('Create a company in Iskraemeco website' , () => {
+    before(function (){
+            
+            cy.visit('http://iskraemeco-app.tk/');
+            cy.get('#username').type('sys_admin');
+            cy.get('#password').type('123456');
+            cy.get('[type="submit"]').click();
+            cy.get('a[href="#menu_6"]').should('be.visible');
+            // From Home pagev
+            cy.get('a[href="#menu_6"]').click();    // it'll open General drop-down list
+            //cy.contains('General','Companies');
+            cy.get('a[href="http://iskraemeco-app.tk/master/company"]').click();
+          
+            // create New company
+            
+            cy.get('a[href="http://iskraemeco-app.tk/master/company/create"]').click({force: true});
+        
+    })
+
+        it('check that user can add a new company',()=> { 
+               cy.get('#nameInput').type('ghada');
+               cy.get('button[data-id="currencyInput"]').click();
+               cy.get('#currencyInput').select('1',{force: true});
+               //cy.contains('Egyptian Pound')
+
+               
+               //('Egyptian Pound');
+
+        })
+
+
+})
+
